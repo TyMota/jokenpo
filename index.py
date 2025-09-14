@@ -7,6 +7,7 @@ print("====================")
 
 lista = ["PEDRA", "PAPEL", "TESOURA"]
 final = ""
+continuar = ""
 
 bot_choice = random.choice(lista)
 
@@ -23,6 +24,15 @@ Pedra
 Papel
 Tesoura 
 Digite sua escolha: """).upper()
+    
+"""    
+print("JO...")
+sleep(1)
+print("KEN...")
+sleep(1)
+print("PÔ!!!")
+sleep(0.5)
+"""   
     
 
 def jokenpo_result(player_choice, bot_choice):
@@ -44,8 +54,36 @@ def jokenpo_result(player_choice, bot_choice):
     mensagem = (f"Você escolheu {player_choice} e o computador {bot_choice}. Você {final}!")
 
     return mensagem, final
-    
-msg, resultado = jokenpo_result(player_choice, bot_choice)
-print(msg)
 
+while continuar != "NAO":
+
+    bot_choice = random.choice(lista)
+
+    msg, resultado = jokenpo_result(player_choice, bot_choice)
+
+    print(msg)
+
+    continuar = input("Deseja continuar jogado? Digite [SIM] ou [NAO]: ").upper()
+    while continuar not in ["SIM", "NAO"]:
+        continuar = input("Opção errada! Digite [SIM] ou [NAO]: ").upper()
+
+    if continuar == "SIM":
+        player_choice = input("""As opções são:
+Pedra
+Papel
+Tesoura
+Digite sua escolha: """).upper()
+    else:
+        break
+    
+    while player_choice not in ["PEDRA", "PAPEL", "TESOURA"]:
+        player_choice = input("""Opção invalida! As opções são:
+Pedra
+Papel
+Tesoura 
+Digite sua escolha: """).upper()
+            
+            
+
+print("Fim do Programa!")
         
